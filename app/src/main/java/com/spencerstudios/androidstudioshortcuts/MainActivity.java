@@ -1,5 +1,6 @@
 package com.spencerstudios.androidstudioshortcuts;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -90,11 +91,17 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_windows) {
             windowsSelected = true;
+            listView.setAdapter(new ShortCutAdapter(MainActivity.this, ShortCuts.list(), windowsSelected ));
+            setSubtitle();
+
         } else if (id == R.id.nav_mac) {
             windowsSelected = false;
+            listView.setAdapter(new ShortCutAdapter(MainActivity.this, ShortCuts.list(), windowsSelected ));
+            setSubtitle();
+        }else if (id == R.id.nav_attr){
+            displayAttrDialog();
         }
-        listView.setAdapter(new ShortCutAdapter(MainActivity.this, ShortCuts.list(), windowsSelected ));
-        setSubtitle();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -126,5 +133,13 @@ public class MainActivity extends AppCompatActivity
             invalidateOptionsMenu();
             getSupportActionBar().setSubtitle(windowsSelected ? "Windows/Linux" : "Mac");
         }
+    }
+
+    private void displayAttrDialog(){
+
+        final Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.attribution_dialog);
+
+        dialog.show();
     }
 }
