@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_windows"
+            android:icon="@mipmap/ic_computer_black_24dp"
+            android:title="Windows/Linux" />
+        <item
+            android:id="@+id/nav_mac"
+            android:icon="@mipmap/ic_computer_black_24dp"
+            android:title="Mac" />
+
+    </group>
+
+
+    <item android:title="Other">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@mipmap/ic_thumb_up_black_24dp"
+                android:title="Attribution" />
+        </menu>
+    </item>
+</menu>
