@@ -66,13 +66,13 @@ public class ShortCutAdapter extends BaseAdapter {
 
         if (data.get(position).getShortcut().length()>0) {
             holder.container.setBackgroundColor(Color.WHITE);
-            holder.tvShortcut.setTextColor(Color.parseColor("#535353"));
+            holder.tvShortcut.setTextColor(Color.parseColor("#424242"));
             holder.tvShortcut.setTypeface(Typeface.create("monospace", Typeface.BOLD));
             holder.tvInfo.setVisibility(View.VISIBLE);
             holder.tvInfo.setText(data.get(position).getShortcut());
             holder.tvShortcut.setText(windowsSelected ? data.get(position).getWindows() : data.get(position).getMac());
         }else{
-            holder.container.setBackgroundColor(Color.parseColor("#009688"));
+            holder.container.setBackgroundColor(Color.parseColor("#424242"));
             holder.tvShortcut.setTypeface(Typeface.create("sans-serif-light", Typeface.NORMAL));
             holder.tvShortcut.setTextColor(Color.WHITE);
             holder.tvInfo.setVisibility(View.GONE);
