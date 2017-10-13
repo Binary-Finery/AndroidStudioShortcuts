@@ -9,6 +9,8 @@ public class ShortCuts {
 
         List<Data> populatedList = new ArrayList<>();
 
+        //general
+
         populatedList.add(new Data("", "General", ""));
         populatedList.add(new Data("Save all", "Control + S", "Command + S"));
         populatedList.add(new Data("Synchronize", "Control + Alt + Y", "Command + Option + Y"));
@@ -45,9 +47,10 @@ public class ShortCuts {
         populatedList.add(new Data("Open method hierarchy", "Control + Shift + H", "Command + Shift + H"));
         populatedList.add(new Data("Open call hierarchy", "Control + Alt + H", "Control + Option + H"));
 
+        //writing code
+
         populatedList.add(new Data("", "Writing Code", ""));
 
-        //writing code
         populatedList.add(new Data("Generate code (getters, setters, constructors, hashCode/equals, toString, new file, new class)", "Alt + Insert", "Command + N"));
         populatedList.add(new Data("Override methods", "Control + O", "Control + O"));
         populatedList.add(new Data("Implement methods", "Control + I", "Control + I"));
@@ -89,6 +92,7 @@ public class ShortCuts {
         populatedList.add(new Data("Next/previous highlighted error", "F2 / Shift + F2", "F2 / Shift + F2"));
 
         //build and run...
+
         populatedList.add(new Data("", "Build and Run", ""));
 
         populatedList.add(new Data("Build", "Control + F9", "Command + F9"));
@@ -96,6 +100,7 @@ public class ShortCuts {
         populatedList.add(new Data("Apply changes (with Instant Run)", "Control + F10", "Control + Command + R"));
 
         //debugging
+
         populatedList.add(new Data("", "Debugging", ""));
 
         populatedList.add(new Data("Debug", "Shift + F9", "Control + D"));
@@ -126,7 +131,6 @@ public class ShortCuts {
         populatedList.add(new Data("Extract constant", "Control + Alt + C", "Command + Option + C"));
         populatedList.add(new Data("Extract parameter", "Control + Alt + P", "Command + Option + P"));
 
-
         //vcs
 
         populatedList.add(new Data("", "Version Control / Local History", ""));
@@ -136,9 +140,6 @@ public class ShortCuts {
         populatedList.add(new Data("View recent changes", "Alt + Shift + C", "Option + Shift + C"));
         populatedList.add(new Data("Open VCS popup", "Alt + ` (backquote)", "Control + V"));
 
-
         return populatedList;
-
-
     }
 }

@@ -4,4 +4,14 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_settings">Search</string>
+    <string name="win">Windows/Linux</string>
+    <string name="mac">Mac</string>
+    <string name="nav_title">Dev Essentials</string>
+    <string name="nav_subtitle">Android Studio Shortcuts</string>
+    <string name="nav_other">Other</string>
+    <string name="nav_attr">Attribution</string>
+    <string name="attr_text1">Launcher Icon</string>
+    <string name="attr_text2">By \'DinosoftLabs\' from\nflaticon.com</string>
+    <string name="attr_text3">Shortcuts were sourced from\nhttps://developer.android.com/studio/intro/keyboard-shortcuts.html</string>
+
 </resources>

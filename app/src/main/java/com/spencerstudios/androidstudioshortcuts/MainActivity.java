@@ -17,13 +17,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,
-        SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
 
     private List<Data> temp;
     private ListView listView;
-    private ShortCutAdapter shortCutAdapter;
     private boolean windowsSelected = true;
 
     @Override
@@ -35,13 +32,11 @@ public class MainActivity extends AppCompatActivity
 
         setSubtitle();
 
-        //l = ShortCuts.list();
         temp = new ArrayList<>();
 
-        listView = (ListView)findViewById(R.id.list_view) ;
-        shortCutAdapter = new ShortCutAdapter(this, ShortCuts.list(), windowsSelected);
+        listView = (ListView) findViewById(R.id.list_view);
+        ShortCutAdapter shortCutAdapter = new ShortCutAdapter(this, ShortCuts.list(), windowsSelected);
         listView.setAdapter(shortCutAdapter);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,6 +46,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
     }
 
     @Override
@@ -68,7 +64,7 @@ public class MainActivity extends AppCompatActivity
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.main, menu);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setQueryHint("search titles...");
+        searchView.setQueryHint("search shortcuts...");
         searchView.setOnQueryTextListener(this);
         return true;
     }
@@ -86,22 +82,22 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_windows) {
             windowsSelected = true;
-            listView.setAdapter(new ShortCutAdapter(MainActivity.this, ShortCuts.list(), windowsSelected ));
+            listView.setAdapter(new ShortCutAdapter(MainActivity.this, ShortCuts.list(), windowsSelected));
             setSubtitle();
 
         } else if (id == R.id.nav_mac) {
             windowsSelected = false;
-            listView.setAdapter(new ShortCutAdapter(MainActivity.this, ShortCuts.list(), windowsSelected ));
+            listView.setAdapter(new ShortCutAdapter(MainActivity.this, ShortCuts.list(), windowsSelected));
             setSubtitle();
-        }else if (id == R.id.nav_attr){
+
+        } else if (id == R.id.nav_attr) {
             displayAttrDialog();
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -118,24 +114,22 @@ public class MainActivity extends AppCompatActivity
 
         temp.clear();
         for (int i = 0; i < ShortCuts.list().size(); i++) {
-            if (ShortCuts.list().get(i).getShortcut().toLowerCase().contains(entry.toLowerCase())) {
+            if (ShortCuts.list().get(i).getShortcut().toLowerCase().contains(entry.toLowerCase()))
                 temp.add(ShortCuts.list().get(i));
-            }
         }
-        if (entry.length() > 0) listView.setAdapter(new ShortCutAdapter(this, temp, windowsSelected));
-        else listView.setAdapter(new ShortCutAdapter(this, ShortCuts.list(), windowsSelected));
+        listView.setAdapter(new ShortCutAdapter(this, entry.length() > 0 ? temp : ShortCuts.list(), windowsSelected));
 
         return false;
     }
 
-    private void setSubtitle(){
-        if (getSupportActionBar()!=null){
+    private void setSubtitle() {
+        if (getSupportActionBar() != null) {
             invalidateOptionsMenu();
-            getSupportActionBar().setSubtitle(windowsSelected ? "Windows/Linux" : "Mac");
+            getSupportActionBar().setSubtitle(windowsSelected ? getString(R.string.win) : getString(R.string.mac));
         }
     }
 
-    private void displayAttrDialog(){
+    private void displayAttrDialog() {
 
         final Dialog dialog = new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.attribution_dialog);
